@@ -95,5 +95,5 @@
     </section>
 
     @endsection
-@push('js')
+  @push('js')
     @endpush
