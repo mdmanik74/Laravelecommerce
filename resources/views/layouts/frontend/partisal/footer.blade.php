@@ -1,148 +1,126 @@
-<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.html">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.html">Trending</a></li>
-										<li><a href="index.html">Best Seller</a></li>
-										<li><a href="index.html">All Product</a></li>
-										<li><a href="index.html">Wishlist</a></li>
-										<li><a href="index.html">Blog</a></li>
-										<li><a href="index.html">Contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+<div class="footer">
+		<div class="container">
+			<div class="col-md-3 w3_footer_grid">
+				<h3>information</h3>
+				<ul class="w3_footer_grid_list">
+					<li><a href="events.html">Events</a></li>
+					<li><a href="about.html">About Us</a></li>
+					<li><a href="products.html">Best Deals</a></li>
+					<li><a href="services.html">Services</a></li>
+					<li><a href="short-codes.html">Short Codes</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>policy info</h3>
+				<ul class="w3_footer_grid_list">
+					<li><a href="faqs.html">FAQ</a></li>
+					<li><a href="privacy.html">privacy policy</a></li>
+					<li><a href="privacy.html">terms of use</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>what in stores</h3>
+				<ul class="w3_footer_grid_list">
+					<li><a href="pet.html">Pet Food</a></li>
+					<li><a href="frozen.html">Frozen Snacks</a></li>
+					<li><a href="kitchen.html">Kitchen</a></li>
+					<li><a href="products.html">Branded Foods</a></li>
+					<li><a href="household.html">Households</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>twitter posts</h3>
+				<ul class="w3_footer_grid_list1">
+					<li><label class="fa fa-twitter" aria-hidden="true"></label><i>01 day ago</i><span>Non numquam <a href="#">http://sd.ds/13jklf#</a>
+						eius modi tempora incidunt ut labore et
+						<a href="#">http://sd.ds/1389kjklf#</a>quo nulla.</span></li>
+					<li><label class="fa fa-twitter" aria-hidden="true"></label><i>02 day ago</i><span>Con numquam <a href="#">http://fd.uf/56hfg#</a>
+						eius modi tempora incidunt ut labore et
+						<a href="#">http://fd.uf/56hfg#</a>quo nulla.</span></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+			<div class="agile_footer_grids">
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h4>100% secure payments</h4>
+						<img src="images/card.png" alt=" " class="img-responsive" />
 					</div>
 				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h5>connect with us</h5>
+						<ul class="agileits_social_icons">
+							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
 					</div>
 				</div>
+				<div class="clearfix"> </div>
 			</div>
-		</footer>
-		<!-- //Footer Area -->
-		<!-- QUICKVIEW PRODUCT -->
-		<div id="quickview-wrapper">
-		    <!-- Modal -->
-		    <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
-		        <div class="modal-dialog modal__container" role="document">
-		            <div class="modal-content">
-		                <div class="modal-header modal__header">
-		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                </div>
-		                <div class="modal-body">
-		                    <div class="modal-product">
-		                        <!-- Start product images -->
-		                        <div class="product-images">
-		                            <div class="main-image images">
-		                                <img alt="big images" src="images/product/big-img/1.jpg">
-		                            </div>
-		                        </div>
-		                        <!-- end product images -->
-		                        <div class="product-info">
-		                            <h1>Simple Fabric Bags</h1>
-		                            <div class="rating__and__review">
-		                                <ul class="rating">
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                </ul>
-		                                <div class="review">
-		                                    <a href="#">4 customer reviews</a>
-		                                </div>
-		                            </div>
-		                            <div class="price-box-3">
-		                                <div class="s-price-box">
-		                                    <span class="new-price">$17.20</span>
-		                                    <span class="old-price">$45.00</span>
-		                                </div>
-		                            </div>
-		                            <div class="quick-desc">
-		                                Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
-		                            </div>
-		                            <div class="select__color">
-		                                <h2>Select color</h2>
-		                                <ul class="color__list">
-		                                    <li class="red"><a title="Red" href="#">Red</a></li>
-		                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                </ul>
-		                            </div>
-		                            <div class="select__size">
-		                                <h2>Select size</h2>
-		                                <ul class="color__list">
-		                                    <li class="l__size"><a title="L" href="#">L</a></li>
-		                                    <li class="m__size"><a title="M" href="#">M</a></li>
-		                                    <li class="s__size"><a title="S" href="#">S</a></li>
-		                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
-		                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-		                                </ul>
-		                            </div>
-		                            <div class="social-sharing">
-		                                <div class="widget widget_socialsharing_widget">
-		                                    <h3 class="widget-title-modal">Share this product</h3>
-		                                    <ul class="social__net social__net--2 d-flex justify-content-start">
-		                                        <li class="facebook"><a href="#" class="rss social-icon"><i class="zmdi zmdi-rss"></i></a></li>
-		                                        <li class="linkedin"><a href="#" class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a></li>
-		                                        <li class="pinterest"><a href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
-		                                        <li class="tumblr"><a href="#" class="tumblr social-icon"><i class="zmdi zmdi-tumblr"></i></a></li>
-		                                    </ul>
-		                                </div>
-		                            </div>
-		                            <div class="addtocart-btn">
-		                                <a href="#">Add to cart</a>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
+			<div class="wthree_footer_copy">
+				<p>© 2016 Grocery Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+			</div>
 		</div>
-		<!-- END QUICKVIEW PRODUCT -->
 	</div>
-	<!-- //Main wrapper -->
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="{{asset('assets/frontend/js/bootstrap.min.js')}}"></script>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<script src="{{asset('assets/frontend/js/minicart.js')}}"></script>
+<script>
+		paypal.minicart.render();
 
-	<!-- JS Files -->
-	<script src="{{asset('assets/frontend/js/vendor/jquery-3.2.1.min.js')}}"></script>
-	<script src="{{asset('assets/frontend/js/popper.min.js')}}"></script>
-	<script src="{{asset('assets/frontend/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('assets/frontend/js/plugins.js')}}"></script>
-	<script src="{{asset('assets/frontend/js/active.js')}}"></script>
-	
+		paypal.minicart.cart.on('checkout', function (evt) {
+			var items = this.items(),
+				len = items.length,
+				total = 0,
+				i;
+
+			// Count the number of each item in the cart
+			for (i = 0; i < len; i++) {
+				total += items[i].get('quantity');
+			}
+
+			if (total < 3) {
+				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+				evt.preventDefault();
+			}
+		});
+
+	</script>
 </body>
 </html>
