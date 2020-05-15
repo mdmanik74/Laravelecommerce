@@ -224,6 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- banner -->
 	<!-- content -->
+	 @yield('content')
 <!-- top-brands -->
 	
 <!-- //top-brands -->
@@ -233,6 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- newsletter -->
 	<!-- news latter include -->
 <!-- //newsletter -->
+ @include('layouts.frontend.partisal.newslatter');
 <!-- footer -->
 	<!-- include footer -->
 
