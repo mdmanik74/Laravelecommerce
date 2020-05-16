@@ -234,8 +234,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- newsletter -->
 	<!-- news latter include -->
 <!-- //newsletter -->
- @include('layouts.frontend.partisal.newslatter');
+ @include('layouts.frontend.partisal.newslatter')
 <!-- footer -->
 	<!-- include footer -->
 
-	 @include('layouts.frontend.partisal.footer');
+	 @include('layouts.frontend.partisal.footer')
