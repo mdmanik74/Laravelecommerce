@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Brian2694\Toastr\Facades\Toastr;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categ=Category::latest()->get();
+        return view('admin.category.index',compact('categ'));
     }
 
     /**
@@ -36,7 +37,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+        $cat= new Category();
+        $cat->name=$request->name;
+        $cat->slug=str_slug($request->name);
+        $cat->save();
+        Toastr::success('Category Succesfully saved :)','Success');
+        return redirect()->route('admin.category.index');
     }
 
     /**

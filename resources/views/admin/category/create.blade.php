@@ -41,11 +41,12 @@
               <div class="row">
                 <div class="col-3"></div>
               <div class="col-md-6">
-              <form role="form">
+              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.category.store')}}">
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Category Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
+                    <label for="exampleInput">Category Name</label>
+                    <input type="text" class="form-control" name="name"  placeholder="Enter Category Name">
                   </div>
           
                 <!-- /.card-body -->

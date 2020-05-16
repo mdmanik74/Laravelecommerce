@@ -37,7 +37,7 @@
                
        
             </button>
-                  
+
             </a>
             </h3>
             </div>
@@ -46,41 +46,36 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>serial</th>
+                  <th>name</th>
+                  <th>slug(s)</th>
+                  <th>action</th>
                 </tr>
                 </thead>
                 <tbody>
+                  @foreach($categ as $key=>$cats)
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
+                  <td>{{$key+1}}</td>
+                  <td>{{$cats->name}}</td>
+                  <td>
+                    {{$cats->slug}}
                   </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
+                    <td>
+                      <a href="{{ route('admin.category.edit',$cats->id) }}" class="btn btn-info waves-effect">
+                     <i class="material-icons">edit</i>
+                   </a>
+                     <button class="btn btn-danger waves-effect" type="button" onclick="deleteCategory({{ $cats->id }})">
+                       <i class="material-icons">delete</i>
+                    </button>
+                   <form id="delete-form-{{ $cats->id }}" action="{{ route('admin.category.destroy',$cats->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            </td>
+
+                  
                 </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
-                </tr>
+                @endforeach
                 </tfoot>
               </table>
             </div>
