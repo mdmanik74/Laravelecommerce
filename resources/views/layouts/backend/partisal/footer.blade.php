@@ -25,5 +25,6 @@
 
 <!-- PAGE SCRIPTS -->
 <script src="{{asset('assets/backend/dist/js/pages/dashboard2.js')}}"></script>
+@stack('js')
 </body>
 </html>

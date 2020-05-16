@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/backend/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
- 
+  @stack('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -171,7 +171,7 @@
 
       <!-- Sidebar Menu -->
       <!-- side menu include -->
-      @include('layouts.backend.partisal.sidebar');
+      @include('layouts.backend.partisal.sidebar')
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

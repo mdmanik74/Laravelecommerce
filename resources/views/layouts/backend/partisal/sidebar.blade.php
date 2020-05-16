@@ -12,11 +12,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ route('admin.category.index') }}" class="nav-link {{ Request::is('admin/category') ? 'active' : '' }}">
+              <i class="fas fa-circle nav-icon"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+               Category
               </p>
             </a>
           </li>
