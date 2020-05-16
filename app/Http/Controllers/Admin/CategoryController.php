@@ -67,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -79,7 +79,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        
+        $this->validate($request,[
+            'name'=>'required',
+        ]);
+        $category->name=$request->name;
+        $category->slug=str_slug($request->name);
+        $category->save();
+        Toastr::success('Category Succesfully Update :)','Success');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -90,6 +98,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+         $category->delete();
+         Toastr::success('Category Succesfully Deleted :)','Success');
+          return redirect()->back();
     }
 }

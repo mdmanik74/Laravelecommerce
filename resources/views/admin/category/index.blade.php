@@ -49,6 +49,7 @@
                   <th>serial</th>
                   <th>name</th>
                   <th>slug(s)</th>
+                  <th>Create</th>
                   <th>action</th>
                 </tr>
                 </thead>
@@ -60,17 +61,24 @@
                   <td>
                     {{$cats->slug}}
                   </td>
+                  <td>{{$cats->created_at->toFormattedDateString()}}</td>
                     <td>
                       <a href="{{ route('admin.category.edit',$cats->id) }}" class="btn btn-info waves-effect">
                      <i class="material-icons">edit</i>
                    </a>
-                     <button class="btn btn-danger waves-effect" type="button" onclick="deleteCategory({{ $cats->id }})">
-                       <i class="material-icons">delete</i>
-                    </button>
-                   <form id="delete-form-{{ $cats->id }}" action="{{ route('admin.category.destroy',$cats->id) }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
+                    <a href="" class="btn btn-danger waves-effect" type="button" onclick="if(confirm('Are you Sure, You want to delete this?')){
+                  event.preventDefault();
+                  document.getElementById('delete-form-{{ $cats->id }}').submit();
+                  }else{
+                  event.preventDefault();
+                  }">
+                    <i class="material-icons">delete</i>
+                  </a>
+                  <form method="POST" id="delete-form-{{ $cats->id }}" action="{{ route('admin.category.destroy',$cats->id) }}" style="display: none;">
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                    
+                  </form>
                                             </td>
 
                   
