@@ -34,7 +34,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Category Create</h3>
+                <h3 class="card-title">New Category Create</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -54,11 +54,7 @@
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="card">
-                 <button type="submit" class="btn btn-danger">
-                   <a href="{{route('admin.category.index')}}">
-                 Back
-            </a>
-               </button> 
+               <a  class="btn btn-danger m-t-15 waves-effect" href="{{ route('admin.category.index') }}">BACK</a>
                 </div>
               </form>
             </div>

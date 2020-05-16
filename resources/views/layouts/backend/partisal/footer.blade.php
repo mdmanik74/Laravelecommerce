@@ -21,7 +21,8 @@
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{asset('assets/backend/dist/js/demo.js')}}"></script>
 
-
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 
 <!-- PAGE SCRIPTS -->
 <script src="{{asset('assets/backend/dist/js/pages/dashboard2.js')}}"></script>
