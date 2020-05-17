@@ -19,6 +19,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.product.index') }}" class="nav-link {{ Request::is('admin/product') ? 'active' : '' }}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>
+               Product
+              </p>
+            </a>
+          </li>
           
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">

@@ -3,7 +3,10 @@
 @section('title','Category')
 
 @push('css')
-
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 @endpush
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -38,12 +41,13 @@
               <div class="row">
                 <div class="col-3"></div>
               <div class="col-md-6">
-              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.category.store')}}">
-                @csrf
+              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.category.update',$category->id)}}">
+                 @csrf
+                    @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInput">Category Name</label>
-                    <input type="text" class="form-control" name="name"  placeholder="Enter Category Name">
+                    <input type="text" class="form-control" name="name"  value="{{$category->name}}">
                   </div>
           
                 <!-- /.card-body -->

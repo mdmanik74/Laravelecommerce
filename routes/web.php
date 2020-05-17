@@ -26,5 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
  Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'admin'],function(){
  Route::get('dashboard','DashboardController@index')->name('dashboard');
  Route::resource('category','CategoryController');
+ Route::resource('product','ProductController');
   
 });
