@@ -47,28 +47,30 @@
                   </div>
                   <div class="form-group">
                         <label>Category</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
+                        <select name="categorys" class="form-control">
+                          <option value="">-- Please select --</option>
+                          @foreach($category as $categorys)
+                          <option value="">{{$categorys->name}}</option>
+                         @endforeach
                           
                         </select>
                       </div>
                   <div class="form-group">
                     <label for="exampleInput">Product Price</label>
-                    <input type="text" class="form-control" name="name"  placeholder="Enter Product Price">
+                    <input type="text" class="form-control" name="price"  placeholder="Enter Product Price">
                   </div>
     
                   <div class="form-group">
                     <label for="exampleInputFile">Product Image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
                   <!-- textarea -->
-                <textarea class="textarea" placeholder="Place some text here"
+                <textarea class="textarea" name="descr" placeholder="Place product Description text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </div>
               

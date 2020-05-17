@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,6 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+      
         $product=Product::latest()->get();
         return view('admin.product.index',compact('product'));
     }
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+          $category=Category::all();
+        return view('admin.product.create',compact('category'));
     }
 
     /**
