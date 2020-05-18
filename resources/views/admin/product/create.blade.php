@@ -60,15 +60,15 @@
                     <input type="number" class="form-control" name="price"  placeholder="Enter Product Price">
                   </div>
     
-                  <div class="form-group">
-                    <label for="exampleInputFile">Product Image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
+              <div class="form-group">
+       <label for="exampleInputFile">Product Image</label>
+                  <div class="input-group">
+                         <div class="custom-file">
+                <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                   <!-- textarea -->
                 <textarea class="textarea" name="descr" placeholder="Place product Description text here"
                           style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
