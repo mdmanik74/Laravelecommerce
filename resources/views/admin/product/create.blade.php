@@ -38,7 +38,7 @@
               <div class="row">
                 <div class="col-3"></div>
               <div class="col-md-6">
-              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.category.store')}}">
+              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.product.store')}}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -47,17 +47,17 @@
                   </div>
                   <div class="form-group">
                         <label>Category</label>
-                        <select name="categorys" class="form-control">
+                        <select name="cat_id" class="form-control">
                           <option value="">-- Please select --</option>
                           @foreach($category as $categorys)
-                          <option value="">{{$categorys->name}}</option>
+                          <option value="{{$categorys->id}}">{{$categorys->name}}</option>
                          @endforeach
                           
                         </select>
                       </div>
                   <div class="form-group">
                     <label for="exampleInput">Product Price</label>
-                    <input type="text" class="form-control" name="price"  placeholder="Enter Product Price">
+                    <input type="number" class="form-control" name="price"  placeholder="Enter Product Price">
                   </div>
     
                   <div class="form-group">
@@ -71,7 +71,7 @@
                   </div>
                   <!-- textarea -->
                 <textarea class="textarea" name="descr" placeholder="Place product Description text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </div>
               
                 <!-- /.card-body -->

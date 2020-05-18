@@ -33,7 +33,8 @@
             <div class="card-header">
               <h3 class="card-title">
                  <a href="{{ route('admin.product.create') }}">
-                <button type="button" class="btn btn-block btn-info btn-sm"> Add New Product
+                  
+                <button type="button" class="btn btn-block btn-info btn-sm"><i class="fas fa-plus-circle"></i> Add New Product
                
        
             </button>

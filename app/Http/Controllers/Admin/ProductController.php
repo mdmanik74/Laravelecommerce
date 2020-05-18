@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Product;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 class ProductController extends Controller
 {
     /**
@@ -39,7 +43,45 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request,[
+            'name' => 'required',
+            'cat_id' => 'required',
+            'price' => 'required',
+            'descr' => 'required',
+            'image' => 'required',
+            
+
+
+        ]);
+         $image = $request->file('image');
+        $slug = str_slug($request->name);
+        if(isset($image))
+        {
+//            make unipue name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName  = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            if(!Storage::disk('public')->exists('product'))
+            {
+                Storage::disk('public')->makeDirectory('product');
+            }
+
+            $postImage = Image::make($image)->resize(300,300)->save('foo.jpg');
+            Storage::disk('public')->put('product/'.$imageName,$postImage);
+
+        } else {
+            $imageName = "default.png";
+        }
+        $product = new Product();
+        $product->name = $request->name;
+        $product->slug=str_slug($request->name);
+        $product->image = $imageName;
+        $product->price = $request->price;
+        $product->descr = $request->descr;
+        $product->cat_id=$request->cat_id;
+        $product->save();
+        Toastr::success('Product Succesfully Saved :)','Success');
+        return redirect()->route('admin.product.index');
     }
 
     /**
