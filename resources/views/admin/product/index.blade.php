@@ -62,7 +62,7 @@
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{$prodct->name}}</td>
-                  <td>{{$prodct->Category}}</td>
+                  <td>{{$prodct->name}}</td>
                   <td>{{$prodct->image}}</td>
                   <td>{{$prodct->price}}</td>
                   <td>{{$prodct->view}}</td>

@@ -53,7 +53,7 @@ class ProductController extends Controller
 
 
         ]);
-         $image = $request->file('image');
+        $image = $request->file('image');
         $slug = str_slug($request->name);
         if(isset($image))
         {
@@ -70,7 +70,7 @@ class ProductController extends Controller
             Storage::disk('public')->put('product/'.$imageName,$postImage);
 
         } else {
-            $imageName = "default.png";
+            $imageName = "";
         }
         $product = new Product();
         $product->name = $request->name;
