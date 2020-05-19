@@ -20,8 +20,10 @@ class ProductController extends Controller
     public function index()
     {
       
-        $product=Product::latest()->get();
-        return view('admin.product.index',compact('product'));
+      $product=Product::latest()->join('categories','products.cat_id','categories.id')
+        ->select('products.*','categories.name')->get();
+      return view('admin.product.index',compact('product'));
+        
     }
 
     /**
@@ -45,7 +47,7 @@ class ProductController extends Controller
     {
          $this->validate($request,[
             'name' => 'required',
-            'cat_id' => 'required',
+            'categories' => 'required',
             'price' => 'required',
             'descr' => 'required',
             'image' => 'required',
@@ -78,7 +80,7 @@ class ProductController extends Controller
         $product->image = $imageName;
         $product->price = $request->price;
         $product->descr = $request->descr;
-        $product->cat_id=$request->cat_id;
+        $product->cat_id=$request->categories;
         $product->save();
         Toastr::success('Product Succesfully Saved :)','Success');
         return redirect()->route('admin.product.index');

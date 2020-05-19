@@ -63,10 +63,12 @@
                   <td>{{$key+1}}</td>
                   <td>{{$prodct->name}}</td>
                   <td>{{$prodct->name}}</td>
-                  <td>{{$prodct->image}}</td>
+                  <td>
+                   <img height="50" width="70" src="{{ asset('storage/product/'.$prodct->image) }}">
+                  </td>
                   <td>{{$prodct->price}}</td>
-                  <td>{{$prodct->view}}</td>
-                  <td>{{$prodct->active}}</td>
+                  <td>{{$prodct->view_count}}</td>
+                  <td>{{$prodct->status}}</td>
                     <td>
                       <a href="{{ route('admin.product.edit',$prodct->id) }}" class="btn btn-info waves-effect">
                      <i class="material-icons">edit</i>

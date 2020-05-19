@@ -38,7 +38,7 @@
               <div class="row">
                 <div class="col-3"></div>
               <div class="col-md-6">
-              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.product.store')}}">
+              <form role="form"  enctype="multipart/form-data" method="POST" action="{{route('admin.product.store')}}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -47,7 +47,7 @@
                   </div>
                   <div class="form-group">
                         <label>Category</label>
-                        <select name="cat_id" class="form-control">
+                        <select name="categories" class="form-control">
                           <option value="">-- Please select --</option>
                           @foreach($category as $categorys)
                           <option value="{{$categorys->id}}">{{$categorys->name}}</option>
