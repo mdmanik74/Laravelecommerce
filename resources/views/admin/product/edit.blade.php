@@ -40,6 +40,7 @@
               <div class="col-md-6">
               <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.product.update',$product->id)}}">
                 @csrf
+                 @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInput">Product Name</label>
@@ -48,9 +49,8 @@
                   <div class="form-group">
                         <label>Category</label>
                         <select name="category" class="form-control">
-                          <option value="">-- Please select --</option>
                           @foreach($category as $categorys)
-                 <option {{ $categorys->id == $product->cat_id? 'selected' : '' }}  value="{{$categorys->id}}">{{$categorys->name}}</option>
+                 <option {{ $categorys->id == $product->category->id ? 'selected' : '' }}  value="{{$categorys->id}}">{{$categorys->name}}</option>
                          @endforeach
                           
                         </select>

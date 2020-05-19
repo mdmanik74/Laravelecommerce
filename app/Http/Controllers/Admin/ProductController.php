@@ -20,8 +20,7 @@ class ProductController extends Controller
     public function index()
     {
       
-      $product=Product::latest()->join('categories','products.cat_id','categories.id')
-        ->select('products.*','categories.name')->get();
+      $product=Product::latest()->get();
       return view('admin.product.index',compact('product'));
         
     }
@@ -120,7 +119,48 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+         $this->validate($request,[
+            'name' => 'required',
+            'category' => 'required',
+            'price' => 'required',
+            'descr' => 'required',
+            
+
+
+        ]);
+       $image = $request->file('image');
+        $slug = str_slug($request->name);
+        if(isset($image))
+        {
+//            make unipue name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName  = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            if(!Storage::disk('public')->exists('product'))
+            {
+                Storage::disk('public')->makeDirectory('product');
+            }
+//            delete old post image
+            if(Storage::disk('public')->exists('product/'.$product->image))
+            {
+                Storage::disk('public')->delete('product/'.$product->image);
+            }
+            $postImage = Image::make($image)->resize(300,300)->save('foo.jpg');
+            Storage::disk('public')->put('product/'.$imageName,$postImage);
+
+        } else {
+            $imageName = $product->image;
+        }
+
+        $product->name = $request->name;
+        $product->slug=str_slug($request->name);
+        $product->image = $imageName;
+        $product->price = $request->price;
+        $product->descr = $request->descr;
+        $product->cat_id=$request->category;
+        $product->save();
+        Toastr::success('Product Succesfully Update :)','Success');
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -131,6 +171,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if (Storage::disk('public')->exists('product/'.$product->image))
+        {
+            Storage::disk('public')->delete('product/'.$product->image);
+        }
+        $product->delete();
+        Toastr::success('Product Succesfully Deleted :)','Success');
+        return redirect()->route('admin.product.index');
     }
 }
