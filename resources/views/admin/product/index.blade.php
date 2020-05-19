@@ -68,10 +68,21 @@
                   </td>
                   <td>{{$prodct->price}}</td>
                   <td>{{$prodct->view_count}}</td>
-                  <td>{{$prodct->status}}</td>
+                  <td>
+                    @if($prodct->status ==true)
+                        <a href="" class="btn btn-warning waves-effect">
+                            <i class="material-icons">Active</i></a>
+                              @else
+                              <a href="" class="btn btn-warning waves-effect">
+                             <i class="material-icons">Inactive</i>
+                              @endif
+                  </td>
                     <td>
+                      <a href="{{ route('admin.product.show',$prodct->id) }}" class="btn btn-primary waves-effect">
+                     <i class="fa fa-eye" aria-hidden="true"></i>
+                   </a>
                       <a href="{{ route('admin.product.edit',$prodct->id) }}" class="btn btn-info waves-effect">
-                     <i class="material-icons">edit</i>
+                     <i class="far fa-edit"></i>
                    </a>
                     <a href="" class="btn btn-danger waves-effect" type="button" onclick="if(confirm('Are you Sure, You want to delete this?')){
                   event.preventDefault();
@@ -79,7 +90,7 @@
                   }else{
                   event.preventDefault();
                   }">
-                    <i class="material-icons">delete</i>
+                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </a>
                   <form method="POST" id="delete-form-{{ $prodct->id }}" action="{{ route('admin.product.destroy',$prodct->id) }}" style="display: none;">
                     {{ csrf_field() }}
