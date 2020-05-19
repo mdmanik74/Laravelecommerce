@@ -12,7 +12,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.category.index') }}" class="nav-link {{ Request::is('admin/category') ? 'active' : '' }}">
+            <a href="{{ route('admin.category.index') }}" class="nav-link {{ Request::is('admin/category*') ? 'active' : '' }}">
               <i class="fas fa-circle nav-icon"></i>
               <p>
                Category
@@ -20,7 +20,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.product.index') }}" class="nav-link {{ Request::is('admin/product') ? 'active' : '' }}">
+            <a href="{{ route('admin.product.index') }}" class="nav-link {{ Request::is('admin/product*') ? 'active' : '' }}">
               <i class="fas fa-circle nav-icon"></i>
               <p>
                Product

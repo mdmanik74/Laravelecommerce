@@ -41,7 +41,7 @@
                       <div class="user-block">
                        
                         <span class="username">
-                          <a href="#">{{$product->name}}</a>
+                          <h2>{{$product->name}}</h2>
                         </span>
                         <span class="description"> 
  post create {{ $product->created_at->toFormattedDateString() }} and update - {{ $product->updated_at->toFormattedDateString() }}

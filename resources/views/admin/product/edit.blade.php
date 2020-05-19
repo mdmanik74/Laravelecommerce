@@ -38,40 +38,47 @@
               <div class="row">
                 <div class="col-3"></div>
               <div class="col-md-6">
-              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.product.update')}}">
+              <form role="form" nctype="multipart/form-data" method="POST" action="{{route('admin.product.update',$product->id)}}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInput">Product Name</label>
-                    <input type="text" class="form-control" name="name" >
+                    <input type="text" class="form-control" name="name" value="{{$product->name}}" >
                   </div>
                   <div class="form-group">
                         <label>Category</label>
-                        <select name="cat_id" class="form-control">
+                        <select name="category" class="form-control">
                           <option value="">-- Please select --</option>
                           @foreach($category as $categorys)
-                          <option value="{{$categorys->id}}">{{$categorys->name}}</option>
+                 <option {{ $categorys->id == $product->cat_id? 'selected' : '' }}  value="{{$categorys->id}}">{{$categorys->name}}</option>
                          @endforeach
                           
                         </select>
                       </div>
                   <div class="form-group">
                     <label for="exampleInput">Product Price</label>
-                    <input type="number" class="form-control" name="price" >
+                    <input type="number" class="form-control" value="{{$product->price}}" name="price" >
                   </div>
     
                   <div class="form-group">
-                                                <label for="exampleInputFile">Product Image</label>
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
-                                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+               <label for="exampleInputFile">Product Image</label>
+                  <div class="input-group">
+                      <div class="custom-file">
+                 <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+
                                                     </div>
                                                 </div>
+           <img height="80" width="80" src="{{ asset('storage/product/'.$product->image) }}">
+    
                                             </div>
+
                   <!-- textarea -->
                 <textarea class="textarea" name="descr" placeholder="Place product Description text here"
-                          style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                            
+                             {!! $product->descr !!}
+                          </textarea>
               </div>
               
                 <!-- /.card-body -->

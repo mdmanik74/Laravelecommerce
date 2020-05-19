@@ -107,7 +107,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+          $category=Category::all();
+        return view('admin.product.edit',compact('category','product'));
     }
 
     /**
