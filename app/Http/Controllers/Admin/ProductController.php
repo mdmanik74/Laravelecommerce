@@ -45,7 +45,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
          $this->validate($request,[
-            'name' => 'required',
+            'product_name' => 'required',
             'category' => 'required',
             'price' => 'required',
             'descr' => 'required',
@@ -74,12 +74,12 @@ class ProductController extends Controller
             $imageName = "";
         }
         $product = new Product();
-        $product->name = $request->name;
-        $product->slug=str_slug($request->name);
+        $product->product_name = $request->product_name;
+        $product->slug=str_slug($request->product_name);
         $product->image = $imageName;
         $product->price = $request->price;
         $product->descr = $request->descr;
-        $product->cat_id=$request->category;
+        $product->categories_id=$request->category;
         $product->save();
         Toastr::success('Product Succesfully Saved :)','Success');
         return redirect()->route('admin.product.index');
@@ -120,7 +120,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
          $this->validate($request,[
-            'name' => 'required',
+            'product_name' => 'required',
             'category' => 'required',
             'price' => 'required',
             'descr' => 'required',
@@ -129,7 +129,7 @@ class ProductController extends Controller
 
         ]);
        $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = str_slug($request->product_name);
         if(isset($image))
         {
 //            make unipue name for image
@@ -152,12 +152,12 @@ class ProductController extends Controller
             $imageName = $product->image;
         }
 
-        $product->name = $request->name;
+        $product->product_name = $request->product_name;
         $product->slug=str_slug($request->name);
         $product->image = $imageName;
         $product->price = $request->price;
         $product->descr = $request->descr;
-        $product->cat_id=$request->category;
+        $product->categories_id=$request->category;
         $product->save();
         Toastr::success('Product Succesfully Update :)','Success');
         return redirect()->route('admin.product.index');

@@ -68,7 +68,7 @@
                   <span class="text-xl">Category</span>
 
                   <br>
-                 {{$product->category->name}}
+                 {{$product->category->categroy_name}}
                 </label>
               <label class="btn btn-default text-center">
                  

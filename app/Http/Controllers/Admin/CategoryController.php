@@ -38,11 +38,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required',
+            'categroy_name'=>'required',
         ]);
         $cat= new Category();
-        $cat->name=$request->name;
-        $cat->slug=str_slug($request->name);
+        $cat->categroy_name=$request->categroy_name;
+        $cat->slug=str_slug($request->categroy_name);
         $cat->save();
         Toastr::success('Category Succesfully saved :)','Success');
         return redirect()->route('admin.category.index');
@@ -81,10 +81,10 @@ class CategoryController extends Controller
     {
         
         $this->validate($request,[
-            'name'=>'required',
+            'categroy_name'=>'required',
         ]);
-        $category->name=$request->name;
-        $category->slug=str_slug($request->name);
+        $category->categroy_name=$request->categroy_name;
+        $category->slug=str_slug($request->categroy_name);
         $category->save();
         Toastr::success('Category Succesfully Update :)','Success');
         return redirect()->route('admin.category.index');

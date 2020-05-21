@@ -57,7 +57,7 @@
                   @foreach($categ as $key=>$cats)
                 <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$cats->name}}</td>
+                  <td>{{$cats->categroy_name}}</td>
                   <td>
                     {{$cats->slug}}
                   </td>

@@ -43,7 +43,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInput">Category Name</label>
-                    <input type="text" class="form-control" name="name"  placeholder="Enter Category Name">
+                    <input type="text" class="form-control" name="categroy_name"  placeholder="Enter Category Name">
                   </div>
           
                 <!-- /.card-body -->

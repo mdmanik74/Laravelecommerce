@@ -44,13 +44,13 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInput">Product Name</label>
-                    <input type="text" class="form-control" name="name" value="{{$product->name}}" >
+                    <input type="text" class="form-control" name="product_name" value="{{$product->product_name}}" >
                   </div>
                   <div class="form-group">
                         <label>Category</label>
                         <select name="category" class="form-control">
                           @foreach($category as $categorys)
-                 <option {{ $categorys->id == $product->category->id ? 'selected' : '' }}  value="{{$categorys->id}}">{{$categorys->name}}</option>
+                 <option {{ $categorys->id == $product->category->id ? 'selected' : '' }}  value="{{$categorys->id}}">{{$categorys->categroy_name}}</option>
                          @endforeach
                           
                         </select>

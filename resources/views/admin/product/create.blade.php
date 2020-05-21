@@ -43,14 +43,14 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInput">Product Name</label>
-                    <input type="text" class="form-control" name="name"  placeholder="Enter Product Name">
+                    <input type="text" class="form-control" name="product_name"  placeholder="Enter Product Name">
                   </div>
                   <div class="form-group">
                         <label>Category</label>
                         <select name="category" class="form-control">
                           <option value="">-- Please select --</option>
                           @foreach($category as $categorys)
-                          <option value="{{$categorys->id}}">{{$categorys->name}}</option>
+                          <option value="{{$categorys->id}}">{{$categorys->categroy_name}}</option>
                          @endforeach
                           
                         </select>
