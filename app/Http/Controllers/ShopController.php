@@ -5,28 +5,11 @@ use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-class HomeController extends Controller
+
+
+class ShopController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-   
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-         $categories = Category::all();
-        $product = Product::latest()->where("status",1)->take(8)->get();
-        return view('welcome',compact('categories','product'));
-    }
-
-    public function shop($slug){
+   public function shop($slug){
 
         $product =Product::where('slug',$slug)->first();
         $categories =Category::all();
@@ -39,5 +22,4 @@ class HomeController extends Controller
         $randomposts = Product::where("status",1)->take(3)->inRandomOrder()->get();
         return view('shop',compact('product','randomposts','categories'));
     }
-    
 }

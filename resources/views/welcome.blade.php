@@ -49,7 +49,7 @@
                                 <figure>
                                     <div class="snipcart-item block" >
                                         <div class="snipcart-thumb">
-                                            <a href="single.html"><img height="140" width="140" title=" " alt=" " src="{{ asset('storage/product/'.$topview->image) }}" /></a>      
+                                            <a href="{{ route('shop',$topview->slug) }}"><img height="140" width="140" title=" " alt=" " src="{{ asset('storage/product/'.$topview->image) }}" /></a>      
                                             <p>{{str_limit($topview->product_name,'15')}}</p>
                                             <h4>{{number_format($topview->price,2)}}TK</h4>
                                         </div>
