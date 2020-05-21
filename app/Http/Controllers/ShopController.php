@@ -19,7 +19,7 @@ class ShopController extends Controller
             $product->increment('view_count');
             Session::put($blogKey,1);
         }
-        $randomposts = Product::where("status",1)->take(3)->inRandomOrder()->get();
+        $randomposts = Product::where("status",1)->take(4)->inRandomOrder()->get();
         return view('shop',compact('product','randomposts','categories'));
     }
 }

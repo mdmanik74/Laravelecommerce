@@ -26,18 +26,6 @@ class HomeController extends Controller
         return view('welcome',compact('categories','product'));
     }
 
-    public function shop($slug){
-
-        $product =Product::where('slug',$slug)->first();
-        $categories =Category::all();
-        $blogKey = 'blog_' . $product->id;
-
-        if (!Session::has($blogKey)) {
-            $product->increment('view_count');
-            Session::put($blogKey,1);
-        }
-        $randomposts = Product::where("status",1)->take(3)->inRandomOrder()->get();
-        return view('shop',compact('product','randomposts','categories'));
-    }
+    
     
 }

@@ -10,4 +10,8 @@ class Product extends Model
     {
         return $this->belongsTo('App\Category','categories_id');
     }
+     public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
