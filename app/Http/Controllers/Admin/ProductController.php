@@ -67,7 +67,7 @@ class ProductController extends Controller
                 Storage::disk('public')->makeDirectory('product');
             }
 
-            $postImage = Image::make($image)->resize(300,300)->save('foo.jpg');
+            $postImage = Image::make($image)->resize(140,140)->save('foo.jpg');
             Storage::disk('public')->put('product/'.$imageName,$postImage);
 
         } else {
@@ -146,7 +146,7 @@ class ProductController extends Controller
         {
             Storage::disk('public')->delete('product/'.$product->image);
         }
-            $postImage = Image::make($image)->resize(300,300)->save('foo.jpg');
+            $postImage = Image::make($image)->resize(140,140)->save('foo.jpg');
             Storage::disk('public')->put('product/'.$imageName,$postImage);
 
         } else {

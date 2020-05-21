@@ -61,7 +61,7 @@
                   @foreach($product as $key=>$prodct)
                 <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$prodct->product_name}}</td>
+                  <td>{{str_limit($prodct->product_name,'15')}}</td>
                   <td>{{$prodct->category->categroy_name}}</td>
                   <td>
                    <img height="50" width="70" src="{{ asset('storage/product/'.$prodct->image) }}">
