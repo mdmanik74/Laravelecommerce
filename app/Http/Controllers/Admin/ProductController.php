@@ -55,7 +55,7 @@ class ProductController extends Controller
 
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->name);
+        $slug = str_slug($request->product_name);
         if(isset($image))
         {
 //            make unipue name for image
@@ -140,11 +140,12 @@ class ProductController extends Controller
             {
                 Storage::disk('public')->makeDirectory('product');
             }
-//            delete old post image
-            if(Storage::disk('public')->exists('product/'.$product->image))
-            {
-                Storage::disk('public')->delete('product/'.$product->image);
-            }
+
+            //            delete old post image
+            if (Storage::disk('public')->exists('product/'.$product->image))
+        {
+            Storage::disk('public')->delete('product/'.$product->image);
+        }
             $postImage = Image::make($image)->resize(300,300)->save('foo.jpg');
             Storage::disk('public')->put('product/'.$imageName,$postImage);
 
@@ -153,7 +154,7 @@ class ProductController extends Controller
         }
 
         $product->product_name = $request->product_name;
-        $product->slug=str_slug($request->name);
+        $product->slug=str_slug($request->product_name);
         $product->image = $imageName;
         $product->price = $request->price;
         $product->descr = $request->descr;
@@ -178,5 +179,17 @@ class ProductController extends Controller
         $product->delete();
         Toastr::success('Product Succesfully Deleted :)','Success');
         return redirect()->route('admin.product.index');
+    }
+
+    // post active unactive
+    public function active($id){
+   $product=Product::find($id)->where('id',$id)->update(['status'=>1]);
+   Toastr::success('Product Succesfully Active :)','Success');
+    return redirect()->back();
+    }
+    public function unactive($id){
+   $product=Product::find($id)->where('id',$id)->update(['status'=>0]);
+   Toastr::success('Product Succesfully Deactive :)','Success');
+    return redirect()->back();
     }
 }

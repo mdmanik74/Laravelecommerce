@@ -27,5 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
  Route::get('dashboard','DashboardController@index')->name('dashboard');
  Route::resource('category','CategoryController');
  Route::resource('product','ProductController');
+ //active unactive
+ Route::get('active/{id}','ProductController@active')->name('active');
+  Route::get('unactive/{id}','ProductController@unactive')->name('unactive');
   
 });

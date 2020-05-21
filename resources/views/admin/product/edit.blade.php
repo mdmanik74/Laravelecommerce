@@ -60,18 +60,19 @@
                     <input type="number" class="form-control" value="{{$product->price}}" name="price" >
                   </div>
     
-                  <div class="form-group">
-               <label for="exampleInputFile">Product Image</label>
-                  <div class="input-group">
-                      <div class="custom-file">
-                 <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
-                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-
-                                                    </div>
-                                                </div>
-           <img height="80" width="80" src="{{ asset('storage/product/'.$product->image) }}">
-    
-                                            </div>
+    <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Product Image</span>
+  </div>
+  <div class="custom-file">
+    <input type="file" name="image" class="custom-file-input" id="inputGroupFile01"
+      aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+  </div>
+</div>
+<img height="80" width="80" src="{{ asset('storage/product/'.$product->image) }}">
+<br>
+              
 
                   <!-- textarea -->
                 <textarea class="textarea" name="descr" placeholder="Place product Description text here"

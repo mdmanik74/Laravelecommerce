@@ -70,10 +70,10 @@
                   <td>{{$prodct->view_count}}</td>
                   <td>
                     @if($prodct->status ==true)
-                        <a href="" class="btn btn-warning waves-effect">
+                        <a href="{{route('admin.unactive',$prodct->id)}}" class="btn btn-warning waves-effect">
                             <i class="material-icons">Active</i></a>
                               @else
-                              <a href="" class="btn btn-warning waves-effect">
+                              <a href="{{route('admin.active',$prodct->id)}}" class="btn btn-warning waves-effect">
                              <i class="material-icons">Inactive</i>
                               @endif
                   </td>
