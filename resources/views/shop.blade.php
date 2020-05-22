@@ -63,14 +63,12 @@
                     <div class="col-md-3 w3ls_w3l_banner_left">
                         <div class="hover14 column">
                         <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                            <div class="agile_top_brand_left_grid_pos">
-                                <img src="images/offer.png" alt=" " class="img-responsive" />
-                            </div>
+                           
                             <div class="agile_top_brand_left_grid1">
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="single.html"><img height="140" width="140" src="{{ asset('storage/product/'.$randm->image) }}" alt=" " class="img-responsive" /></a>
+                                            <a href="{{ route('shop',$randm->slug) }}"><img height="140" width="140" src="{{ asset('storage/product/'.$randm->image) }}" alt=" " class="img-responsive" /></a>
                                             <p>{{str_limit($randm->product_name,'25')}}</p>
                                             <h4>{{number_format($randm->price,2)}}TK</h4>
                                         </div>

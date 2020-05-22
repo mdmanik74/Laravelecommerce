@@ -86,6 +86,7 @@
 .more_product {
     margin-top: 50px;
     margin-bottom: 50px;
+    text-align: center;
 }
 .snipcart-thumb {
     text-align: center;
@@ -95,7 +96,11 @@
 }
         </style>
         <div class="more_product">
-            <p>View More Product</p>
+    <nav aria-label="Page navigation">
+  <ul class="pagination">
+    {{$product->links() }}
+  </ul>
+</nav>
     </div>
 
      @endsection

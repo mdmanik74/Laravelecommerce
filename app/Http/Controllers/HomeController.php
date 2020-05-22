@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function index()
     {
          $categories = Category::all();
-        $product = Product::latest()->where("status",1)->take(8)->get();
+        $product = Product::orderBy('view_count', 'desc')->where("status",1)->paginate(8);
         return view('welcome',compact('categories','product'));
     }
 
