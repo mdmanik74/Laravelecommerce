@@ -14,4 +14,5 @@ class Product extends Model
     {
         return 'slug';
     }
+    protected $table='product';
 }

@@ -47,6 +47,7 @@
                 <thead>
                 <tr>
                   <th>serial</th>
+                  <th>count</th>
                   <th>name</th>
                   <th>slug(s)</th>
                   <th>Create</th>
@@ -57,6 +58,7 @@
                   @foreach($categ as $key=>$cats)
                 <tr>
                   <td>{{$key+1}}</td>
+                   <td>{{$cats->products->count()}}</td>
                   <td>{{$cats->categroy_name}}</td>
                   <td>
                     {{$cats->slug}}

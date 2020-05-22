@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.html"><span>Grocery</span> Store</a></h1>
+				<h1><a href="{{route('home')}}"><span>Grocery</span> Store</a></h1>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -132,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
 						@foreach ($categories as $cates)
-						<li><a href="products.html">{{$cates->categroy_name}}</a></li>
+						<li><a href="{{route('category',$cates->slug)}}">{{$cates->categroy_name}}</a></li>
 						@endforeach
 						<li><a href="household.html">Households</a></li>
 						<li class="dropdown mega-dropdown active">
