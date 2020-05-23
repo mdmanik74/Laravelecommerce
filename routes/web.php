@@ -29,6 +29,6 @@ Route::get('/shop/{slug}','ShopController@shop')->name('shop');
 });
 
 View::composer('layouts.frontend.app',function ($view) {
-    $categories = App\Category::all();
+    $categories = App\Category::take(8)->get();
     $view->with('categories',$categories);
 });

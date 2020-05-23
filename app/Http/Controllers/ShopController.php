@@ -10,7 +10,6 @@ class ShopController extends Controller
     public function shop($slug){
 
         $product =Product::where('slug',$slug)->first();
-        $categories =Category::all();
         $blogKey = 'blog_' . $product->id;
 
         if (!Session::has($blogKey)) {
@@ -18,6 +17,6 @@ class ShopController extends Controller
             Session::put($blogKey,1);
         }
         $randomposts = Product::where("status",1)->take(4)->inRandomOrder()->get();
-        return view('shop',compact('product','randomposts','categories'));
+        return view('shop',compact('product','randomposts'));
     }
 }
