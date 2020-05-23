@@ -7,7 +7,7 @@
 
         <div class="w3l_banner_nav_right">
             <div class="w3l_banner_nav">
-                <h3>Home/Shop/{{$product->category->categroy_name}}<span class="blink_me"></span></h3>
+                <h3>Home/Shop/{{$product->categories->categroy_name}}<span class="blink_me"></span></h3>
             </div>
             <div class="agileinfo_single">
                 <h5>{{$product->product_name}}</h5>

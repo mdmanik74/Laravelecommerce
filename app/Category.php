@@ -10,6 +10,7 @@ class Category extends Model
   
     public function products()
     {
-        return $this->belongsToMany('App\Product')->withTimestamps();
-    }
+        
+     return $this->hasMany('App\Product', 'categories_id');
+ }
 }

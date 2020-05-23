@@ -62,7 +62,7 @@
                 <tr>
                   <td>{{$key+1}}</td>
                   <td>{{str_limit($prodct->product_name,'15')}}</td>
-                  <td>{{$prodct->category->categroy_name}}</td>
+                  <td>{{$prodct->categories->categroy_name}}</td>
                   <td>
                    <img height="50" width="70" src="{{ asset('storage/product/'.$prodct->image) }}">
                   </td>

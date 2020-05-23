@@ -7,11 +7,12 @@
         <div class="w3l_banner_nav_right">
             
              <div class="w3l_banner_nav">
-                <h3>Home/Category/{{$category->categroy_name}}<span class="blink_me"></span></h3>
+    <h3>Home/Category/{{$category->categroy_name}}/{{$products->count()}}<span class="blink_me"></span></h3>
             </div>
             <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
                 <h3>{{$category->categroy_name}} Products</h3>
                 <div class="w3ls_w3l_banner_nav_right_grid1">
+                 @if($products->count() > 0)
                 @foreach($products as $product)
                     <div class="col-md-3 w3ls_w3l_banner_left">
                         <div class="hover14 column">
@@ -23,7 +24,7 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="single.html"><img height="140" width="140" id="example" src="{{ asset('storage/product/'.$product->image) }}" alt=" " class="img-responsive" /></a>
+                                            <a href="{{ route('shop',$product->slug) }}"><img height="140" width="140" id="example" src="{{ asset('storage/product/'.$product->image) }}" alt=" " class="img-responsive" /></a>
                                             <p>{{$product->product_name}}</p>
                                             <h4>{{number_format($product->price,2)}}TK</h4>
                                         </div>
@@ -43,27 +44,46 @@
                         </div>
                     </div>
                      @endforeach
+                     @else
+                   
+                               
+           <strong class="error-info">Sorry, No post found :(</strong>
+                               
+                             
+                            
+                @endif
                     <div class="clearfix"> </div>
-                       
+                    <div class="more_product">
+    <nav aria-label="Page navigation">
+  <ul class="pagination">
+    {{$products->links() }}
+  </ul>
+</nav>
+    </div>   
                 </div>
                
                 <style type="text/css">
-                .snipcart-thumb {
+            .more_product p{
     text-align: center;
-}.img-responsive {
-    height: 150px;
-    width: 150px;
+    padding: 15px;
+    border: 1px solid #757473;
+    width: 250px;
+    margin: 0 auto;
+    /* background: #46665c; */
+    color: red;
 }
-.col-md-4.agileinfo_single_left {
+.more_product {
+    margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
-    margin: o auto;
-    width: 212px;
-}.nipcart_price {
-    margin-bottom: 20px;
 }
-.w3l_banner_nav {
-    color: brown;
+.snipcart-thumb {
+    text-align: center;
 }
+.hover14.column {
+    margin-bottom: 40px;
+}
+        </style>
             </style> 
             </div>
         </div>

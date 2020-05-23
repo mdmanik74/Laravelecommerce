@@ -24,17 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
         $product = Product::orderBy('view_count', 'desc')->where("status",1)->paginate(8);
         return view('welcome',compact('categories','product'));
     }
 
     public function ByCategory($slug){
 
-
-        $category=Category::where('slug',$slug)->first();
-         $categories = Category::all();
-         $products = $category->products()->get();
-        return view('category',compact('category','products','categories'));
+        $category = Category::where('slug',$slug)->first();
+        $products = $category->products()->orderBy('view_count', 'desc')->where("status",1)->paginate(8);
+        return view('category',compact('category','products'));
     }
 }

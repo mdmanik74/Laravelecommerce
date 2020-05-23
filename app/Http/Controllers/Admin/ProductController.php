@@ -46,7 +46,7 @@ class ProductController extends Controller
     {
          $this->validate($request,[
             'product_name' => 'required',
-            'category' => 'required',
+            'categories' => 'required',
             'price' => 'required',
             'descr' => 'required',
             'image' => 'required',
@@ -79,7 +79,7 @@ class ProductController extends Controller
         $product->image = $imageName;
         $product->price = $request->price;
         $product->descr = $request->descr;
-        $product->categories_id=$request->category;
+        $product->categories_id=$request->categories;
         $product->save();
         Toastr::success('Product Succesfully Saved :)','Success');
         return redirect()->route('admin.product.index');
@@ -121,7 +121,7 @@ class ProductController extends Controller
     {
          $this->validate($request,[
             'product_name' => 'required',
-            'category' => 'required',
+            'categories' => 'required',
             'price' => 'required',
             'descr' => 'required',
             
@@ -158,7 +158,7 @@ class ProductController extends Controller
         $product->image = $imageName;
         $product->price = $request->price;
         $product->descr = $request->descr;
-        $product->categories_id=$request->category;
+        $product->categories_id=$request->categories;
         $product->save();
         Toastr::success('Product Succesfully Update :)','Success');
         return redirect()->route('admin.product.index');
