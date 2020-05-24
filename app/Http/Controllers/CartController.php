@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
+use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart');
+         $cart_products = Cart::content();
+        return view('cart',compact('cart_products'));
     }
 
     /**
@@ -34,7 +36,36 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->except('_token');
+        $rules = [
+          'id' => 'required | integer',
+          'name' => 'required',
+          'qty' => 'required',
+          'price' => 'required',
+        ];
+        $validator = Validator::make($inputs, $rules);
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $id = $request->input('id');
+        $name = $request->input('name');
+        $qty = $request->input('qty');
+        $price = $request->input('price');
+
+        $add = Cart::add(['id' => $id, 'name' => $name, 'qty' => $qty, 'price' => $price, 'weight' => 1 ]);
+        if ($add)
+        {
+        Toastr::success('Product successfully added to cart :)','Success');
+    return redirect()->back();
+
+
+        } else {
+Toastr::success('Product successfully added to cart :)','Success');
+
+            return redirect()->back();
+    }
     }
 
     /**
@@ -66,9 +97,12 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $rowId)
     {
-        //
+        $qty = $request->input('qty');
+        Cart::update($rowId, $qty);
+
+         return redirect()->back()->with('success','Product successfully Update');
     }
 
     /**

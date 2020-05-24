@@ -86,7 +86,15 @@
                             <h4>{{number_format($product->price,2)}}TK</h4>
                         </div>
                         <div class="snipcart-details agileinfo_single_right_details">
-                           <a href="{{route('cart.index')}}"> <input type="submit" name="submit" value="Add to cart" class="button" /> </a>
+                           <form action="{{route('cart.store')}}" method="POST">
+                             @csrf
+                <input type="hidden" name="id" value="{{$product->name}}">
+                <input type="hidden" name="name" value="{{$product->name}}">
+                <input type="hidden" name="qty" value="{{$product->qty}}">
+                <input type="hidden" name="price" value="{{$product->name}}">
+                             
+                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            </form>
                         </div>
                     </div>
                 </div>
@@ -116,11 +124,14 @@
                                             <h4>{{number_format($randm->price,2)}}TK</h4>
                                         </div>
                                         <div class="snipcart-details">
-                                            <form action="#" method="post">
-                                                <fieldset>
-                                                   
-                                                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                                                </fieldset>
+                 <form action="{{route('cart.store')}}" method="post">
+                             @csrf
+                <input type="hidden" name="id" value="{{$randm->id}}">
+                <input type="hidden" name="name" value="{{$randm->name}}">
+                <input type="hidden" name="qty" value="{{$randm->qty}}">
+                <input type="hidden" name="price" value="{{$randm->name}}">
+                             
+                        <input type="submit" value="Add to cart" class="button" />
                                             </form>
                                         </div>
                                     </div>

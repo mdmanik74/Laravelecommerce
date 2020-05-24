@@ -2,6 +2,7 @@
 @section('title','Cart page ')
 
 @push('css')
+
 @endpush
 @section('content')
 <div class="products-breadcrumb">
@@ -23,29 +24,48 @@
 					<thead>
 						<tr>
 							<th>SL No.</th>	
-							<th>Product</th>
-							<th>Quality</th>
 							<th>Product Name</th>
-						
+							<th>Qty</th>
+							<th>Qty Update</th>
 							<th>Price</th>
+							<th>total</th>
 							<th>Remove</th>
 						</tr>
 					</thead>
-					<tbody><tr class="rem1">
-						<td class="invert">1</td>
-						<td class="invert-image"><a href="single.html"><img src="images/1.png" alt=" " class="img-responsive"></a></td>
+					<tbody>
+						 @if($cart_products->count() < 1)
+                                <div class="header bg-green">
+                                        No Product Added
+                                    </div>
+                                @else
+                                 @foreach($cart_products as $product)
+						<tr class="rem1">
+
+						<td class="invert">{{ $loop->iteration }}</td>
+						<td class="invert-image">{{ $product->name }}</td>
 						<td class="invert">
+							<form action="{{ route('cart.update', $product->rowId) }}" method="post">
+                                @csrf
+                               @method('PUT')
 							 <div class="quantity"> 
 								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
+								<input class="cartqtys" type="number" name="qty" value="{{ $product->qty }}">
 								</div>
 							</div>
 						</td>
-						<td class="invert">Fortune Sunflower Oil</td>
+					
+						<td>
+							
+                 	
+                     	 <button type="submit"  class="btn btn-info waves-effect"><i class="fa fa-check-circle"></i>
+                    	</button>
+                    
+                  
+						</td>
+			</form>
+						<td class="invert">{{ $price = number_format($product->price, 2) }}</td>
 						
-						<td class="invert">$290.00</td>
+						<td class="invert">{{ number_format($product->price * $product->qty,2) }}</td>
 						<td class="invert">
 							<div class="rem">
 								<div class="close1"> </div>
@@ -53,50 +73,8 @@
 
 						</td>
 					</tr>
-					<tr class="rem2">
-						<td class="invert">2</td>
-						<td class="invert-image"><a href="single.html"><img src="images/3.png" alt=" " class="img-responsive"></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
-								</div>
-							</div>
-						</td>
-						<td class="invert">Basmati Rise (5 Kg)</td>
-					
-						<td class="invert">$250.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close2"> </div>
-							</div>
-
-						</td>
-					</tr>
-					<tr class="rem3">
-						<td class="invert">3</td>
-						<td class="invert-image"><a href="single.html"><img src="images/2.png" alt=" " class="img-responsive"></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
-								</div>
-							</div>
-						</td>
-						<td class="invert">Pepsi Soft Drink (2 Ltr)</td>
-						
-						<td class="invert">$15.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close3"> </div>
-							</div>
-	
-						</td>
-					</tr>
+					@endforeach
+					 @endif
 
 				</tbody></table>
 			</div>
@@ -166,6 +144,21 @@
 		</div>
 <!-- //about -->
 		</div>
+		<style type="text/css">
+			.fa.fa-home {
+	margin-left: 40px;
+}.cartqtys {
+	width: 50px;
+	border: 0px solid;
+}.header.bg-green {
+	font-size: 30px;
+	color: red;
+	background: whitesmoke;
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 30px;
+}
+		</style>
 		<div class="clearfix"></div>
 	</div>
 <!-- //banner -->

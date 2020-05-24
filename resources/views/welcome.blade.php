@@ -99,13 +99,20 @@
                                     <div class="snipcart-item block" >
                                         <div class="snipcart-thumb">
                                             <a href="{{ route('shop',$topview->slug) }}"><img height="140" width="140" title=" " alt=" " src="{{ asset('storage/product/'.$topview->image) }}" /></a>      
-                                            <p>{{str_limit($topview->product_name,'15')}}</p>
+                                <p>{{str_limit($topview->product_name,'15')}}</p>
                                             <h4>{{number_format($topview->price,2)}}TK</h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                        
-                                                   <a href="{{route('cart.index')}}"> <input type="submit" name="submit" value="Add to cart" class="button" /> </a>
-                                            
+                        <form action="{{route('cart.store')}}" method="POST">
+                             @csrf
+                <input type="hidden" name="id" value="{{ $topview->id }}">
+        <input type="hidden" name="name" value="{{ $topview->product_name }}">
+          <input type="hidden" name="qty" value="1">
+        <input type="hidden" name="price" value="{{ $topview->price }}">
+                             
+                        <input type="submit" name="submit" value="Add to cart" class="button" />
+
+                                            </form>
                                         </div>
                                     </div>
                                 </figure>
