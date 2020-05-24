@@ -4,7 +4,55 @@
 @push('css')
 @endpush
 @section('content')
-
+<div class="w3l_banner_nav_right">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="w3l_banner_nav_right_banner">
+                                <h3>Make your <span>food</span> with Spicy.</h3>
+                                <div class="more">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="w3l_banner_nav_right_banner1">
+                                <h3>Make your <span>food</span> with Spicy.</h3>
+                                <div class="more">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="w3l_banner_nav_right_banner2">
+                                <h3>upto <i>50%</i> off.</h3>
+                                <div class="more">
+                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- flexSlider -->
+                <link rel="stylesheet" href="{{asset('assets/frontend/css/flexslider.css')}}" type="text/css" media="screen" property="" />
+                <script defer src="{{asset('assets/frontend/js/jquery.flexslider.js')}}"></script>
+                <script type="text/javascript">
+                $(window).load(function(){
+                  $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function(slider){
+                      $('body').removeClass('loading');
+                    }
+                  });
+                });
+              </script>
+            <!-- //flexSlider -->
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- slider end -->
         <div class="w3l_banner_nav_right">
             <div class="w3l_banner_nav">
                 <h3>Home/Shop/{{$product->categories->categroy_name}}<span class="blink_me"></span></h3>
@@ -38,12 +86,7 @@
                             <h4>{{number_format($product->price,2)}}TK</h4>
                         </div>
                         <div class="snipcart-details agileinfo_single_right_details">
-                            <form action="#" method="post">
-                                <fieldset>
-                                   
-                                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                                </fieldset>
-                            </form>
+                           <a href="{{route('cart.index')}}"> <input type="submit" name="submit" value="Add to cart" class="button" /> </a>
                         </div>
                     </div>
                 </div>

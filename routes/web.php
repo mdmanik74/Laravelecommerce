@@ -16,6 +16,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category/{slug}','HomeController@ByCategory')->name('category');
 Route::get('/shop/{slug}','ShopController@shop')->name('shop');
+Route::get('/cart','CartController@index')->name('cart.index');
 //admin route
  Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'admin'],function(){
  Route::get('dashboard','DashboardController@index')->name('dashboard');
