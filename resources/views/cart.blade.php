@@ -19,7 +19,9 @@
 			<h3>Chec<span>kout</span></h3>
 			
 	      <div class="checkout-right">
-					<h4>Your shopping cart contains: <span>3 Products</span></h4>
+					<h4>Your shopping cart contains: <span style="color:red">@if(Cart::instance('default')->count()>0)
+			{{ Cart::instance('default')->count() }}
+			@endif Products</span></h4>
 				<table class="timetable_sub">
 					<thead>
 						<tr>
@@ -96,6 +98,7 @@
 				<div class="col-md-4 checkout-left-basket">
 					<a href="{{route('home')}}">
 					<h4>Continue to Shopping</h4></a>
+					@foreach($cart_products as $product)
 					<ul>
 						<li>{{ str_limit($product->name,20) }} <i>=</i> <span>{{ number_format($product->price * $product->qty,2) }} </span></li>
 						<li> <i></i> <span></span></li>
@@ -103,6 +106,7 @@
 						<li>Total Service Charges <i>=</i> <span>{{ Cart::tax() }}</span></li>
 						<li>Total <i>-</i> <span>{{ Cart::total() }}</span></li>
 					</ul>
+					@endforeach
 				</div>
 				<div class="col-md-8 address_form_agile">
 					  <h4>Add a new Details</h4>

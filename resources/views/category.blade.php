@@ -80,10 +80,10 @@
                                         <div class="snipcart-details">
                                             <form action="{{route('cart.store')}}" method="POST">
                              @csrf
-                <input type="hidden" name="id" value="{{ $topview->id }}">
-        <input type="hidden" name="name" value="{{ $topview->product_name }}">
+                <input type="hidden" name="id" value="{{ $product->id }}">
+        <input type="hidden" name="name" value="{{ $product->product_name }}">
           <input type="hidden" name="qty" value="1">
-        <input type="hidden" name="price" value="{{ $topview->price }}">
+        <input type="hidden" name="price" value="{{ $product->price }}">
                              
                         <input type="submit" name="submit" value="Add to cart" class="button" />
 

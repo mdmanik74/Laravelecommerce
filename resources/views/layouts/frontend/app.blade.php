@@ -54,7 +54,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="product_list_header">  
 			<a href="{{route('cart.index')}}">
 				<div class="crt">
-			{{ Cart::count() }}
+					@if(Cart::instance('default')->count()>0)
+			{{ Cart::instance('default')->count() }}
+			@endif
 		</div>
                <input type="submit"  value="View your cart" class="button" /> 
 
