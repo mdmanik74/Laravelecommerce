@@ -50,11 +50,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<input type="submit" value=" ">
 			</form>
 		</div>
+		
 		<div class="product_list_header">  
 			<a href="{{route('cart.index')}}">
-                    <input type="submit"  value="View your cart" class="button" /> </a>
+				<div class="crt">
+			{{ Cart::count() }}
+		</div>
+               <input type="submit"  value="View your cart" class="button" /> 
+
+           </a>
+
               
 		</div>
+		
 		<div class="w3l_header_right">
 			<ul>
 				<li class="dropdown profile_details_drop">
@@ -90,6 +98,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 
 	});
 	</script>
+	<style type="text/css">
+		.crt {
+	overflow: hidden;
+	position: absolute;
+	font-size: 20px;
+	margin-top: 8px;
+	margin-left: 140px;
+	font-weight: bolder;
+	color: white;
+}
+.product_list_header input.button {
+	color: #fff;
+	font-size: 14px;
+	outline: none;
+	text-transform: capitalize;
+	padding: .5em 2.5em .5em 1em;
+	border: 1px solid #84c639;
+	margin: .35em 0 0;
+	width: 160px;
+}
+	</style>
 <!-- //script-for sticky-nav -->
 	<div class="logo_products">
 		<div class="container">

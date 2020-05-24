@@ -8,7 +8,7 @@
 <div class="products-breadcrumb">
 		
 			<ul>
-				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.html">Home</a><span>|</span></li>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{route('home')}}">Home</a><span>|</span></li>
 				<li>Checkout</li>
 			</ul>
 		
@@ -67,8 +67,22 @@
 						
 						<td class="invert">{{ number_format($product->price * $product->qty,2) }}</td>
 						<td class="invert">
+
 							<div class="rem">
-								<div class="close1"> </div>
+								<a href="" type="button" onclick="if(confirm('Are you Sure, You want to remove this?')){
+									event.preventDefault();
+									document.getElementById('delete-form-{{ $product->id }}').submit();
+									}else{
+									event.preventDefault();
+									}">
+											<div class="close1"> </div>
+									</a>
+									<form id="delete-form-{{ $product->id }}" action="{{ route('cart.destroy', $product->rowId) }}" method="post"
+                                                          style="display:none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+							
 							</div>
 
 						</td>
@@ -80,13 +94,14 @@
 			</div>
 			<div class="checkout-left">	
 				<div class="col-md-4 checkout-left-basket">
-					<h4>Continue to basket</h4>
+					<a href="{{route('home')}}">
+					<h4>Continue to Shopping</h4></a>
 					<ul>
-						<li>Product1 <i>-</i> <span>$15.00 </span></li>
-						<li>Product2 <i>-</i> <span>$25.00 </span></li>
-						<li>Product3 <i>-</i> <span>$29.00 </span></li>
-						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-						<li>Total <i>-</i> <span>$84.00</span></li>
+						<li>{{ str_limit($product->name,20) }} <i>=</i> <span>{{ number_format($product->price * $product->qty,2) }} </span></li>
+						<li> <i></i> <span></span></li>
+						<li><i></i> <span></span></li>
+						<li>Total Service Charges <i>=</i> <span>{{ Cart::tax() }}</span></li>
+						<li>Total <i>-</i> <span>{{ Cart::total() }}</span></li>
 					</ul>
 				</div>
 				<div class="col-md-8 address_form_agile">

@@ -111,8 +111,10 @@ Toastr::success('Product successfully update cart :)','Success');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($rowId)
     {
-        //
+        Cart::remove($rowId);
+        Toastr::success('Product Successfully Remove Cart :)','Success');
+        return redirect()->back();
     }
 }
