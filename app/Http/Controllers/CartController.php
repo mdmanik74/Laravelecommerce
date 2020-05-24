@@ -101,8 +101,8 @@ Toastr::success('Product successfully added to cart :)','Success');
     {
         $qty = $request->input('qty');
         Cart::update($rowId, $qty);
-
-         return redirect()->back()->with('success','Product successfully Update');
+Toastr::success('Product successfully update cart :)','Success');
+         return redirect()->back();
     }
 
     /**

@@ -15,6 +15,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for-mobile-apps -->
 <link href="{{asset('assets/frontend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 <!-- font-awesome icons -->
 <link href="{{asset('assets/frontend/css/font-awesome.css')}}" rel="stylesheet" type="text/css" media="all" /> 
 <!-- //font-awesome icons -->
