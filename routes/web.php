@@ -17,6 +17,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category/{slug}','HomeController@ByCategory')->name('category');
 Route::get('/shop/{slug}','ShopController@shop')->name('shop');
 Route::resource('/cart','CartController');
+Route::post('/cart/saved/{product}','CartController@saveforlatter')->name('cart.saveforlatter');
+Route::get('empty',function(){
+Cart::instance('saveForlater')->destroy();
+});
 //admin route
  Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'admin'],function(){
  Route::get('dashboard','DashboardController@index')->name('dashboard');

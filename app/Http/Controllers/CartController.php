@@ -15,7 +15,8 @@ class CartController extends Controller
     public function index()
     {
          $cart_products = Cart::content();
-        return view('cart',compact('cart_products'));
+         $savecart=Cart::instance();
+        return view('cart',compact('cart_products','savecart'));
     }
 
     /**
@@ -126,5 +127,15 @@ Toastr::success('Product successfully update cart :)','Success');
         Cart::remove($rowId);
         Toastr::success('Product Successfully Remove Cart :)','Success');
         return redirect()->back();
+    }
+
+    public function saveforlatter($id){
+
+       $product=Cart::get($id);
+       Cart::remove($id);
+       Cart::instance('saveForlater')->add($product->id, $product->name, $product->qty, $product->price)->associate('App\Product');
+
+Toastr::success('Product has been Saved Cart :)','Success');
+return redirect()->route('cart.index');
     }
 }

@@ -32,6 +32,7 @@
 							<th>Price</th>
 							<th>total</th>
 							<th>Remove</th>
+							<th>Button</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,13 +62,11 @@
      
                      	 <button type="submit"  class="btn btn-info waves-effect"><i class="fa fa-check-circle"></i>
                     	</button>
-                    	 <button type="submit"  class="btn btn-info waves-effect">
-                    	 	Save for later
-                    	</button>
                     
+                    			
                   
 						</td>
-			</form>
+		
 						<td class="invert">{{ $price = number_format($product->price, 2) }}</td>
 						
 						<td class="invert">{{ number_format($product->price * $product->qty,2) }}</td>
@@ -88,8 +87,17 @@
                                                         @method('DELETE')
                                                     </form>
 							
+                 
 							</div>
 
+						</td>
+						<td>
+							 <form action="{{route('cart.saveforlatter',$product->rowId)}}" method="post">
+                  	@csrf
+                    	 <button type="submit"  class="btn btn-info waves-effect">
+                    	 	Save for later
+                    	</button>
+                    </form>
 						</td>
 					</tr>
 					@endforeach
@@ -97,6 +105,7 @@
 
 				</tbody></table>
 			</div>
+			<hr/><hr/><hr/>
 			<div class="checkout-left">	
 				<div class="col-md-4 checkout-left-basket">
 					<a href="{{route('home')}}">
@@ -112,15 +121,14 @@
 					@endforeach
 				</div>
 				<div class="col-md-8 address_form_agile">
-					  <h4>(@if(Cart::instance('default')->count()>0)
-			{{ Cart::instance('default')->count() }}
+					  <h4>(@if(Cart::instance('saveForlater')->count()>0)
+			{{ Cart::instance('saveForlater')->count() }}
 			@endif ) items Save For Later Details</h4>
 				<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
 
 					<table class="timetable_sub">
 					<thead>
 						<tr>
-							<th>SL No.</th>	
 							<th>Product Name</th>
 							<th>Button</th>
 							<th>Price</th>
@@ -128,18 +136,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						 @if($cart_products->count() < 1)
-                                <div class="header bg-green">
-                                        No Saved Product Added
-                                    </div>
-                                @else
-                                 @foreach($cart_products as $product)
+						
+                                	
+                               <?php foreach(Cart::content() as $row) :?>
 						<tr class="rem1">
 
-						<td class="invert">{{ $loop->iteration }}</td>
-						<td class="invert-name">{{ $product->name }}</td>
+						<td class="invert-name">{{ $row->name }}</td>
 						<td class="invert">
-							<form action="{{ route('cart.update', $product->rowId) }}" method="post">
+							<form  method="post">
                                 @csrf
                                @method('PUT')
 						
@@ -150,20 +154,20 @@
                   
 						</td>
 			</form>
-						<td class="invert">{{ $price = number_format($product->price, 2) }}</td>
+						<td class="invert">{{ $price = number_format($row->price, 2) }}</td>
 						
 						<td class="invert">
 
 							<div class="rem">
 								<a href="" type="button" onclick="if(confirm('Are you Sure, You want to remove this?')){
 									event.preventDefault();
-									document.getElementById('delete-form-{{ $product->id }}').submit();
+									document.getElementById('delete-form-{{ $row->id }}').submit();
 									}else{
 									event.preventDefault();
 									}">
 											<div class="close1"> </div>
 									</a>
-									<form id="delete-form-{{ $product->id }}" action="{{ route('cart.destroy', $product->rowId) }}" method="post"
+									<form id="delete-form-{{ $row->id }}" action="{{ route('cart.destroy', $row->rowId) }}" method="post"
                                                           style="display:none;">
                                                         @csrf
                                                         @method('DELETE')
@@ -174,7 +178,7 @@
 						</td>
 					</tr>
 					@endforeach
-					 @endif
+					
 
 				</tbody></table>
 									
