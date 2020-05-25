@@ -66,7 +66,7 @@
                     			
                   
 						</td>
-		
+						</form>
 						<td class="invert">{{ $price = number_format($product->price, 2) }}</td>
 						
 						<td class="invert">{{ number_format($product->price * $product->qty,2) }}</td>
@@ -92,7 +92,7 @@
 
 						</td>
 						<td>
-							 <form action="{{route('cart.saveforlatter',$product->rowId)}}" method="post">
+							 <form action="{{route('saveforlatter',$product->rowId)}}" method="post">
                   	@csrf
                     	 <button type="submit"  class="btn btn-info waves-effect">
                     	 	Save for later
@@ -110,15 +110,30 @@
 				<div class="col-md-4 checkout-left-basket">
 					<a href="{{route('home')}}">
 					<h4>Continue to Shopping</h4></a>
-					@foreach($cart_products as $product)
-					<ul>
-						<li>{{ str_limit($product->name,20) }} <i>=</i> <span>{{ number_format($product->price * $product->qty,2) }} </span></li>
-						<li> <i></i> <span></span></li>
-						<li><i></i> <span></span></li>
-						<li>Total Service Charges <i>=</i> <span>{{ Cart::tax() }}</span></li>
-						<li>Total <i>-</i> <span>{{ Cart::total() }}</span></li>
-					</ul>
-					@endforeach
+					<div class="cartsub">
+					<table class="table table-bordered">
+                            	 <tbody>
+                            <tr>
+							 <td>Quantity :</td>
+							  <td>{{ Cart::count() }}</td>		
+							</tr>
+							<tr>
+							 <td>Sub Total :</td>
+							  <td>{{ Cart::subtotal() }} Taka</td>		
+							</tr>
+							<tr>
+							 <td>Tax :</td>
+							  <td>{{ Cart::tax() }} Taka</td>		
+							</tr>
+							<tr class="header bg-deep-orange">
+							 <td>Total :</td>
+							  <td>{{ Cart::total() }} Taka</td>		
+							</tr>
+
+                            	 </tbody>
+
+                            	</table>
+					</div>
 				</div>
 				<div class="col-md-8 address_form_agile">
 					  <h4>(@if(Cart::instance('saveForlater')->count()>0)
@@ -159,7 +174,7 @@
 						<td class="invert">
 
 							<div class="rem">
-								<a href="" type="button" onclick="if(confirm('Are you Sure, You want to remove this?')){
+					<a href="" type="button" onclick="if(confirm('Are you Sure, You want to remove this?')){
 									event.preventDefault();
 									document.getElementById('delete-form-{{ $row->id }}').submit();
 									}else{
@@ -167,12 +182,11 @@
 									}">
 											<div class="close1"> </div>
 									</a>
-									<form id="delete-form-{{ $row->id }}" action="{{ route('cart.destroy', $row->rowId) }}" method="post"
+									<form id="delete-form-{{ $row->id }}" action="{{ route('saveFor.destroy', $row->rowId) }}" method="post"
                                                           style="display:none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
-							
 							</div>
 
 						</td>
@@ -208,6 +222,11 @@
 	text-align: center;
 	padding: 10px;
 	margin-bottom: 30px;
+}
+.cartsub {
+
+	font-size: 20px;
+	background: black;
 }
 		</style>
 		<div class="clearfix"></div>
