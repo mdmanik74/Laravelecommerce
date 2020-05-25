@@ -88,12 +88,13 @@
                         <div class="snipcart-details agileinfo_single_right_details">
                            <form action="{{route('cart.store')}}" method="POST">
                              @csrf
-                <input type="hidden" name="id" value="{{$product->name}}">
-                <input type="hidden" name="name" value="{{$product->name}}">
-                <input type="hidden" name="qty" value="{{$product->qty}}">
-                <input type="hidden" name="price" value="{{$product->name}}">
+                <input type="hidden" name="id" value="{{ $product->id }}">
+        <input type="hidden" name="name" value="{{ $product->product_name }}">
+          <input type="hidden" name="qty" value="1">
+        <input type="hidden" name="price" value="{{ $product->price }}">
                              
                         <input type="submit" name="submit" value="Add to cart" class="button" />
+
                                             </form>
                         </div>
                     </div>

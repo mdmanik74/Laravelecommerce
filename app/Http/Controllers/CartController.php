@@ -36,6 +36,16 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+
+$duplicates=Cart::search(function($cartItem, $rowId) use ($request){
+        return $cartItem->id===$request->id;
+        });
+    if($duplicates->isNotEmpty()){
+   
+         toastr()->error('Product already added to cart. Please Update Qty');
+       return redirect()->route('cart.index');
+    }
+
         $inputs = $request->except('_token');
         $rules = [
           'id' => 'required | integer',
