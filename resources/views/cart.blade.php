@@ -19,9 +19,10 @@
 			<h3>Chec<span>kout</span></h3>
 			
 	      <div class="checkout-right">
-					<h4>Your shopping cart contains: <span style="color:red">@if(Cart::instance('default')->count()>0)
+					<h4>Your shopping cart contains: <span style="color:red">
+						@if(Cart::instance('default')->count()>0)
 			{{ Cart::instance('default')->count() }}
-			@endif Products</span></h4>
+			 Products</span></h4>
 				<table class="timetable_sub">
 					<thead>
 						<tr>
@@ -36,11 +37,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						 @if($cart_products->count() < 1)
-                                <div class="header bg-green">
-                                        No Product Added
-                                    </div>
-                                @else
+						
+                               
                                  @foreach($cart_products as $product)
 						<tr class="rem1">
 
@@ -92,7 +90,7 @@
 
 						</td>
 						<td>
-							 <form action="{{route('saveforlatter',$product->rowId)}}" method="post">
+			 <form action="{{route('cart.SaveForLater',$product->rowId)}}" method="post">
                   	@csrf
                     	 <button type="submit"  class="btn btn-info waves-effect">
                     	 	Save for later
@@ -101,9 +99,15 @@
 						</td>
 					</tr>
 					@endforeach
-					 @endif
+					
 
 				</tbody></table>
+				@else
+
+ 						<div class="header bg-green">
+                                     You have no Product Added.
+                                    </div>
+            @endif
 			</div>
 			<hr/><hr/><hr/>
 			<div class="checkout-left">	
@@ -136,10 +140,11 @@
 					</div>
 				</div>
 				<div class="col-md-8 address_form_agile">
-					  <h4>(@if(Cart::instance('saveForlater')->count()>0)
-			{{ Cart::instance('saveForlater')->count() }}
-			@endif ) items Save For Later Details</h4>
-				<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+					  <h4>@if (Cart::instance('SaveForLater')->count() > 0)
+		({{ Cart::instance('SaveForLater')->count() }}) items Save For Later Details</h4>
+
+  
+				<form action="" method="post" class="creditly-card-form agileinfo_form">
 
 					<table class="timetable_sub">
 					<thead>
@@ -153,40 +158,34 @@
 					<tbody>
 						
                                 	
-                               <?php foreach(Cart::content() as $row) :?>
+                          @foreach (Cart::instance('SaveForLater')->content() as $product)
 						<tr class="rem1">
 
-						<td class="invert-name">{{ $row->name }}</td>
+						<td class="invert-name">{{ $product->name }}</td>
 						<td class="invert">
-							<form  method="post">
-                                @csrf
-                               @method('PUT')
-						
+							<form action="" method="POST">
+                                 @csrf
+
                     	<button type="submit"  class="btn btn-info waves-effect">move to cart
                     	</button>
 
-                    
+                    	</form>
                   
 						</td>
-			</form>
-						<td class="invert">{{ $price = number_format($row->price, 2) }}</td>
+		
+						<td class="invert">{{ $price = number_format($product->price, 2) }}</td>
 						
 						<td class="invert">
 
 							<div class="rem">
-					<a href="" type="button" onclick="if(confirm('Are you Sure, You want to remove this?')){
-									event.preventDefault();
-									document.getElementById('delete-form-{{ $row->id }}').submit();
-									}else{
-									event.preventDefault();
-									}">
-											<div class="close1"> </div>
-									</a>
-									<form id="delete-form-{{ $row->id }}" action="{{ route('saveFor.destroy', $row->rowId) }}" method="post"
-                                                          style="display:none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
+		
+						 <form action="{{ route('SaveForLater.destroy', $product->rowId) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+
+                           <button type="submit" class="cart-options">X</button>
+                            </form>
+			
 							</div>
 
 						</td>
@@ -195,8 +194,13 @@
 					
 
 				</tbody></table>
-									
-								</form>
+			</form>
+			@else
+
+ 						<div class="header bg-green">
+                                     You have no Product Saved for Later.
+                                    </div>
+            @endif
 									<div class="checkout-right-basket">
 				        	<a href="payment.html">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 			      	</div>
@@ -216,12 +220,12 @@
 	width: 50px;
 	border: 0px solid;
 }.header.bg-green {
-	font-size: 30px;
+	font-size: 20px;
 	color: red;
 	background: whitesmoke;
 	text-align: center;
-	padding: 10px;
-	margin-bottom: 30px;
+	padding: 25px;
+	margin-top: 30px;
 }
 .cartsub {
 

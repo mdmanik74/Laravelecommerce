@@ -128,23 +128,35 @@ Toastr::success('Product successfully update cart :)','Success');
         return redirect()->back();
     }
 
-    public function saveforlatter($id){
-
-       $product=Cart::get($id);
-       Cart::remove($id);
-
-
-       Cart::instance('saveforlatter')->add($product->id, $product->name, $product->qty, $product->price)->associate('App\Product');
-
-Toastr::success('Product has been Saved Cart :)','Success');
-return redirect()->route('cart.index');
-    }
- public function savefordestroy($rowId)
+     public function Savedestroy($id)
     {
-        Cart::remove($rowId);
-        Toastr::success('Product Successfully Remove Cart :)','Success');
-        return redirect()->back();
-
+        Cart::instance('SaveForLater')->remove($id);
+        Toastr::success('Product has been removed:)','Success');
+        return back();
     }
+
+   public function SaveForLater($id){
+
+       $product = Cart::get($id);
+
+        Cart::remove($id);
+
+        $duplicates = Cart::instance('SaveForLater')->search(function ($cartItem, $rowId) use ($id) {
+            return $rowId === $id;
+        });
+
+        if ($duplicates->isNotEmpty()) {
+         Toastr::success('Product  already Saved For Later! :)','Success');
+            return redirect()->route('cart.index');
+
+        }
+
+        Cart::instance('SaveForLater')->add($product->id, $product->name, $product->qty, $product->price)
+            ->associate('App\Product');
+ Toastr::success('Product  has been Saved For Later! :)','Success');
+        return redirect()->route('cart.index');
+    }
+
+
      
 }

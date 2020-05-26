@@ -17,10 +17,14 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category/{slug}','HomeController@ByCategory')->name('category');
 Route::get('/shop/{slug}','ShopController@shop')->name('shop');
 Route::resource('/cart','CartController');
-Route::post('/cart/saved/{product}','CartController@saveforlatter')->name('saveforlatter');
-Route::delete('/cart/{product}','CartController@savefordestroy')->name('saveFor.destroy');
+Route::post('/cart/saveForLater/{product}', 'CartController@SaveForLater')->name('cart.SaveForLater');
+
+Route::delete('/saveForLater/{product}', 'CartController@Savedestroy')->name('SaveForLater.destroy');
+
+
+
 Route::get('empty',function(){
-Cart::instance('saveForlater')->destroy();
+Cart::instance('SaveForLater')->destroy();
 });
 //admin route
  Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'admin'],function(){
