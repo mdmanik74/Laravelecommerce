@@ -27,6 +27,10 @@ Route::post('/switchToCart/{product}', 'SaveForLaterController@switchToCart')->n
 Route::get('empty',function(){
 Cart::instance('SaveForLater')->destroy();
 });
+
+//checkout
+
+Route::resource('/checkout','CheckoutController');
 //admin route
  Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'admin'],function(){
  Route::get('dashboard','DashboardController@index')->name('dashboard');

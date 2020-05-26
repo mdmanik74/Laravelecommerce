@@ -28,21 +28,20 @@
             </a>
           </li>
           
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">Setting Option</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+            <a href="" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
               <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
+               Setting
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+         <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="fas fa-circle nav-icon"></i>
               <p>
-                Gallery
+               User
               </p>
             </a>
           </li>

@@ -9,14 +9,14 @@
 		
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{{route('home')}}">Home</a><span>|</span></li>
-				<li>Checkout</li>
+				<li>Cart</li>
 			</ul>
 		
 	</div>
 		<div class="w3l_banner_nav_right">
 <!-- about -->
 		<div class="privacy about">
-			<h3>Chec<span>kout</span></h3>
+			<h3>Car<span>t</span></h3>
 			
 	      <div class="checkout-right">
 					<h4>Your shopping cart contains: <span style="color:red">
@@ -202,7 +202,7 @@
                                     </div>
             @endif
 									<div class="checkout-right-basket">
-				        	<a href="payment.html">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+				        	<a href="{{route('checkout.index')}}">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 			      	</div>
 					</div>
 			

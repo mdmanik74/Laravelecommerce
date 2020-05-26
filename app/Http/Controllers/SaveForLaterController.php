@@ -10,23 +10,22 @@ class SaveForLaterController extends Controller
 {
     public function switchToCart($id){
 
-       $product = Cart::get($id);
+        $product = Cart::instance('SaveForLater')->get($id);
 
-        Cart::remove($id);
+        Cart::instance('SaveForLater')->remove($id);
 
-        $duplicates = Cart::instance('SaveForLater')->search(function ($cartItem, $rowId) use ($id) {
+        $duplicates = Cart::instance('default')->search(function ($cartItem, $rowId) use ($id) {
             return $rowId === $id;
         });
 
         if ($duplicates->isNotEmpty()) {
-         toastr()->error('Product  already Saved For Later');
+            Toastr::success('Product has been moved to Cart :)','Success');
             return redirect()->route('cart.index');
-
         }
 
-        Cart::instance('SaveForLater')->add($product->id, $product->name, $product->qty, $product->price)
+        Cart::instance('default')->add($product->id, $product->name, 1, $product->price)
             ->associate('App\Product');
  Toastr::success('Product has been moved to Cart :)','Success');
         return redirect()->route('cart.index');
-    }
+}
 }
