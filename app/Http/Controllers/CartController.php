@@ -146,7 +146,7 @@ Toastr::success('Product successfully update cart :)','Success');
         });
 
         if ($duplicates->isNotEmpty()) {
-         Toastr::success('Product  already Saved For Later! :)','Success');
+         toastr()->error('Product  already Saved For Later');
             return redirect()->route('cart.index');
 
         }

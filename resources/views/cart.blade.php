@@ -163,14 +163,14 @@
 
 						<td class="invert-name">{{ $product->name }}</td>
 						<td class="invert">
-							<form action="" method="POST">
-                                 @csrf
+				
+                    	<form action="{{ route('switchToCart', $product->rowId) }}" method="POST">
+                               @csrf
 
-                    	<button type="submit"  class="btn btn-info waves-effect">move to cart
+          
+		<button type="submit"  class="btn btn-info waves-effect">move to cart
                     	</button>
-
-                    	</form>
-                  
+                            </form>
 						</td>
 		
 						<td class="invert">{{ $price = number_format($product->price, 2) }}</td>
