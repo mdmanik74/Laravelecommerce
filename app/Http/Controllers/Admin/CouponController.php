@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Coupon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\Controller;
 
-
-class CheckoutController extends Controller
+class CouponController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-         $cart_product = Cart::content();
-       return view('checkout',compact('cart_product'));
+        $coupons=Coupon::latest()->get();
+        return view('admin.coupon.index',compact('coupons'));
     }
 
     /**
@@ -27,7 +26,7 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        //
+         return view('admin.coupon.create');
     }
 
     /**
@@ -38,16 +37,29 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-       return $request;
+        $this->validate($request,[
+            'code'=>'required',
+             'type'=>'required',
+              'value'=>'required',
+               'percent_off'=>'required',
+        ]);
+        $coupon= new Coupon();
+        $coupon->code=$request->code;
+        $coupon->type=$request->type;
+        $coupon->value=$request->value;
+        $coupon->percent_off=$request->percent_off;
+        $coupon->save();
+        Toastr::success('Coupon Succesfully saved :)','Success');
+        return redirect()->route('admin.coupon.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Coupon $coupon)
     {
         //
     }
@@ -55,10 +67,10 @@ class CheckoutController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Coupon $coupon)
     {
         //
     }
@@ -67,10 +79,10 @@ class CheckoutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Coupon $coupon)
     {
         //
     }
@@ -78,10 +90,10 @@ class CheckoutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Coupon $coupon)
     {
         //
     }

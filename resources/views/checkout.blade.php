@@ -61,21 +61,29 @@
 						@foreach($cart_product as $product)
 						<li>{{ $product->name }}<i>-</i> <span>{{ number_format($product->price,2) }}</span></li>
 						@endforeach
+						<li>Discount<i></i><span>{{ Cart::tax() }} Taka</span></li>
 						<li>Tax<i></i> <span>{{ Cart::tax() }} Taka</span></li>
 						<hr/>
-						<li>Total <i>-</i> <span>{{ Cart::total() }} Taka</span></li>
+						<li style="color: red; font-size:18px">Total <i>-</i> <span>{{ Cart::total() }} Taka</span></li>
 						
 					</ul>
+					<div class="have_code">
+						<form class="codeform">
+							<input type="text" name="">
+							<button type="submit" class="button button-gray">Apply</button>
+						</form>
+					</div>
 				</div>
 				<div class="col-md-8 address_form_agile">
 					  <h4>Billing Details</h4>
-				<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+				<form action="{{route('checkout.store')}}" method="post" class="creditly-card-form agileinfo_form">
+					@csrf
 									<section class="creditly-wrapper wthree, w3_agileits_wrapper">
 										<div class="information-wrapper">
 											<div class="first-row form-group">
 												<div class="controls">
 													<label class="control-label">Email Address: </label>
-													<input class="billing-address-name form-control" type="email" name="name" placeholder="Email Address">
+													<input class="billing-address-name form-control" type="email" name="email" placeholder="Email Address">
 												</div>
 												<div class="controls">
 													<label class="control-label">Full name: </label>
@@ -85,20 +93,20 @@
 													<div class="w3_agileits_card_number_grid_left">
 														<div class="controls">
 															<label class="control-label">Mobile number:</label>
-														    <input class="form-control" type="text" placeholder="Mobile number">
+														    <input name="phone" class="form-control" type="text" placeholder="Mobile number">
 														</div>
 													</div>
 													<div class="w3_agileits_card_number_grid_right">
 														<div class="controls">
 															<label class="control-label">Landmark: </label>
-														 <input class="form-control" type="text" placeholder="Landmark">
+														 <input class="form-control" type="text" name="landmark" placeholder="Landmark">
 														</div>
 													</div>
 													<div class="clear"> </div>
 												</div>
 												<div class="controls">
 													<label class="control-label">Town/City: </label>
-												 <input class="form-control" type="text" placeholder="Town/City">
+												 <input class="form-control" name="town" type="text" placeholder="Town/City">
 												</div>
 													
 											</div>
@@ -120,6 +128,22 @@
 		</div>
 		<div class="clearfix"></div>
 	</div>
+	<style type="text/css">
+		.have_code {
+	width: 200px;
+	height: 60px;
+	margin-top: 50px;
+
+}
+.button.button-gray {
+	font-size: 15px;
+	color: #060606;
+	background: #d4f2d4;
+	margin-top: 10px;
+	width: 70px;
+	height: 30px;
+}
+	</style>
 <!-- //banner -->
 
   @endsection

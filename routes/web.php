@@ -13,6 +13,8 @@
 
 Auth::routes();
 
+Route::get('','HomeController@products')->name('products');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category/{slug}','HomeController@ByCategory')->name('category');
 Route::get('/shop/{slug}','ShopController@shop')->name('shop');
@@ -36,7 +38,8 @@ Route::resource('/checkout','CheckoutController');
  Route::get('dashboard','DashboardController@index')->name('dashboard');
  Route::resource('category','CategoryController');
  Route::resource('product','ProductController');
-
+//coupon
+ Route::resource('coupon','CouponController');
  //active unactive
  Route::get('active/{id}','ProductController@active')->name('active');
   Route::get('unactive/{id}','ProductController@unactive')->name('unactive');

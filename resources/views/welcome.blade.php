@@ -89,6 +89,11 @@
     <div class="top-brands">
         <div class="container">
             <h3>TOp Seles Product</h3>
+            <div class="prices">
+            <strong>Price :</strong>
+           <a href="{{route('home',['product'=> request()->product, 'sort'=>'low_high'])}}">  Low to High</a> |
+            <a href="{{route('home',['product'=> request()->product, 'sort'=>'high_low'])}}">  High to Low</a>
+        </div>
             <div class="agile_top_brands_grids">
                 @foreach($product as $topview)
                 <div class="col-md-3 top_brand_left">
@@ -147,6 +152,13 @@
 }
 .hover14.column {
     margin-bottom: 40px;
+}
+.prices {
+    border: 1px solid;
+    width: 280px;
+    text-align: center;
+    padding: 6px;
+    color: red;
 }
         </style>
         <div class="more_product">

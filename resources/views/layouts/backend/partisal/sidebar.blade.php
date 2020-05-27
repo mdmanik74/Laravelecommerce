@@ -27,6 +27,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.coupon.index') }}" class="nav-link {{ Request::is('admin/coupon*') ? 'active' : '' }}">
+              <i class="fas fa-circle nav-icon"></i>
+              <p>
+              Coupon
+              </p>
+            </a>
+          </li>
           
           <li class="nav-header">Setting Option</li>
           <li class="nav-item">
