@@ -34,14 +34,5 @@ class HomeController extends Controller
 
         return view('category',compact('category','products'));
     }
-    public function products(){
-
-        if (request()->sort='low_high') {
-            $products=$product->sortBy('price');
-        }elseif(request()->sort='high_low'){
-             $product=$product->sortByDesc('price');
-        }
-
-        return view('welcome',compact('products'));
-    }
+    
 }

@@ -13,7 +13,6 @@
 
 Auth::routes();
 
-Route::get('','HomeController@products')->name('products');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/category/{slug}','HomeController@ByCategory')->name('category');
